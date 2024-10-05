@@ -80,8 +80,4 @@ const updateStaff = async (req, res) => {
     }
 };
 
-
-
-
-
 module.exports = { registerStaff, getStaff, updateStaff };

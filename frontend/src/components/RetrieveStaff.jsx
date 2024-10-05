@@ -8,10 +8,13 @@ const RetrieveStaff = () => {
 
   const handleRetrieve = async () => {
     try {
-      const response = await retrieveStaff(employeeNumber);
+      const response = await retrieveStaff(employeeNumber.trim()); //------ Trim to remove white spaces from both ends of string
       setStaff(response);
       setError("");
     } catch (err) {
+      console.log("====================================");
+      console.log(err);
+      console.log("====================================");
       setError("Failed to retrieve staff");
       setStaff(null);
     }

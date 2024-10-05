@@ -12,7 +12,7 @@ const UpdateStaff = () => {
 
   const handleUpdate = async () => {
     try {
-      const response = await updateStaff(employeeNumber, staffData);
+      const response = await updateStaff(employeeNumber.trim(), staffData);
       setMessage("Staff updated successfully");
     } catch (error) {
       setMessage("Failed to update staff");
