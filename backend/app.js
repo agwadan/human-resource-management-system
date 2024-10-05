@@ -1,4 +1,5 @@
 const express = require('express');
+const cors = require('cors');
 const bodyParser = require('body-parser');
 const staffRoutes = require('./routes/staff.routes');
 require('dotenv').config();
@@ -9,13 +10,17 @@ const port = process.env.PORT || 3000;
 
 app.use(bodyParser.json());
 
+app.use(cors());
+
 app.get('/', (req, res) => {
     res.send('API is working!');
 });
 
+
 /* Accessing Staff Routes
 -------------------------*/
 app.use('/api/staff', staffRoutes);
+
 
 /* Synchronizing sequelize models with database
 ------------------------------------------------*/
