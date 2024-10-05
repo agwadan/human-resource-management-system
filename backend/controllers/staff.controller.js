@@ -1,23 +1,16 @@
 const Staff = require('../models/staff.model');
 const multer = require('multer');
 
-// Set up Multer to store the file in memory (as a buffer)
-// You can configure this to store on disk if needed
-const storage = multer.memoryStorage();
-const upload = multer({ storage: storage }); // Multer middleware
+const storage = multer.memoryStorage();//--------- Setting up Multer to store file in memory as buffer
+const upload = multer({ storage: storage });//---- Multer middleware
 
 /* Register new staff members
 ---------------------------- */
 const registerStaff = async (req, res) => {
 
-    console.log('====================================');
-    console.log(req.body);
-    console.log(req.file);
-    console.log('====================================');
-
     try {
         const { surname, otherNames, dateOfBirth, authCode } = req.body;
-        const idPhotoFile = req.file;  // Access the uploaded file
+        const idPhotoFile = req.file; 
 
         if (authCode.length !== 10) {
             return res.status(400).json({ message: 'Invalid auth code.' });
@@ -80,25 +73,33 @@ const getStaff = async (req, res) => {
 const updateStaff = async (req, res) => {
     try {
         const { employeeNumber } = req.params;
-        const { dateOfBirth } = req.body;
-        const idPhotoFile = req.file;  // Access the uploaded file
+        const { dateOfBirth } = req.body; // Get dateOfBirth from request body
+        const idPhotoFile = req.file; // Access the uploaded file (handled by Multer)
 
+        // Find the staff member by employee number
         const staffMember = await Staff.findOne({ where: { employeeNumber } });
         if (!staffMember) {
             return res.status(404).json({ message: 'Staff member not found.' });
         }
 
-        if (dateOfBirth) staffMember.dateOfBirth = dateOfBirth;
+        // Update the date of birth if provided
+        if (dateOfBirth) {
+            staffMember.dateOfBirth = dateOfBirth;
+        }
 
-        // If there's a new image, convert it to Base64 and update
+        // If a new image file is uploaded, convert it to Base64 and update
         if (idPhotoFile) {
+            // Convert file buffer to Base64
             staffMember.idPhoto = idPhotoFile.buffer.toString('base64');
         }
 
+        // Save the updated staff member
         await staffMember.save();
 
+        // Respond with success message and updated staff member details
         res.status(200).json({ message: 'Staff member updated successfully.', staffMember });
     } catch (error) {
+        console.error('Error updating staff member:', error); // Log the error for debugging
         res.status(500).json({ message: 'Failed to update staff member.', error });
     }
 };

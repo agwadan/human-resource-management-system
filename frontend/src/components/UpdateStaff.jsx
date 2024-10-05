@@ -3,19 +3,41 @@ import { updateStaff } from "../services/staffService";
 
 const UpdateStaff = () => {
   const [employeeNumber, setEmployeeNumber] = useState("");
-  const [staffData, setStaffData] = useState({ dateOfBirth: "", idPhoto: "" });
+  const [staffData, setStaffData] = useState({
+    dateOfBirth: "",
+    idPhoto: null,
+  }); // idPhoto should be null to hold file
   const [message, setMessage] = useState("");
 
   const handleChange = (e) => {
     setStaffData({ ...staffData, [e.target.name]: e.target.value });
   };
 
-  const handleUpdate = async () => {
+  // Handle image file upload
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      setStaffData({ ...staffData, idPhoto: file });
+    }
+  };
+
+  const handleUpdate = async (e) => {
+    e.preventDefault();
+
+    /* =======FormData Object to handle upload=========== */
+    const formData = new FormData();
+    formData.append("dateOfBirth", staffData.dateOfBirth);
+
+    /* =======Appending the image if it exists=========== */
+    if (staffData.idPhoto) {
+      formData.append("idPhoto", staffData.idPhoto);
+    }
+
     try {
-      const response = await updateStaff(employeeNumber.trim(), staffData);
-      setMessage("Staff updated successfully");
+      const response = await updateStaff(employeeNumber.trim(), formData); // Pass FormData to the backend
+      setMessage("Staff updated successfully!");
     } catch (error) {
-      setMessage("Failed to update staff");
+      setMessage("Failed to update staff.");
     }
   };
 
@@ -33,13 +55,13 @@ const UpdateStaff = () => {
         placeholder="Date of Birth"
         value={staffData.dateOfBirth}
         onChange={handleChange}
+        required
       />
       <input
-        type="text"
+        type="file"
         name="idPhoto"
-        placeholder="ID Photo (Base64)"
-        value={staffData.idPhoto}
-        onChange={handleChange}
+        accept="image/*"
+        onChange={handleImageChange}
       />
       <button onClick={handleUpdate}>Update Staff</button>
       {message && <p>{message}</p>}

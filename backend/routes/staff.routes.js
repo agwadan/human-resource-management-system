@@ -13,6 +13,6 @@ router.get('/retrieve', getStaff);
 
 /* Route to update staff details
 ---------------------------------- */
-router.put('/update/:employeeNumber', updateStaff);  
+router.put('/update/:employeeNumber', upload.single('idPhoto'), updateStaff); 
 
 module.exports = router;
