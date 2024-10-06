@@ -2,6 +2,7 @@ import React from "react";
 import RegisterStaff from "./components/RegisterStaff";
 import RetrieveStaff from "./components/RetrieveStaff";
 import UpdateStaff from "./components/UpdateStaff";
+import AdminDashboard from "./components/Admin";
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
       <RegisterStaff />
       <RetrieveStaff />
       <UpdateStaff />
+      <AdminDashboard />
     </div>
   );
 }

@@ -1,6 +1,8 @@
 const express = require('express');
 const { registerStaff, getStaff, updateStaff, upload } = require('../controllers/staff.controller');
 
+
+
 const router = express.Router();
 
 /* Route to register new staff
