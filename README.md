@@ -64,3 +64,28 @@ JWT_SECRET=your_secret_key
 - Adding New Admin: `http://localhost:5173/register-admin`
 - Admin Login: `http://localhost:5173/login-admin`
 
+## Screenshots
+
+### Register New Staff
+![image](https://github.com/user-attachments/assets/c97d3d8a-330c-4504-8861-5502444d3010)
+
+### Retrieving Staff Details
+![image](https://github.com/user-attachments/assets/6f5cb9bd-a9a8-4b77-affd-2e06feea0a05)
+
+### Retrieving Staff Details (One Staff Member)
+![image](https://github.com/user-attachments/assets/f8eda3a7-7ff3-432e-860e-deba2ae0f200)
+
+### Updating Staff Details 
+![image](https://github.com/user-attachments/assets/2d0f3aec-fb02-4780-b296-47c19e5245b5)
+
+### Admin Login
+![image](https://github.com/user-attachments/assets/446f92d9-11e1-4d7e-a1c6-f52d114d992c)
+
+### Admin Dashboard
+![image](https://github.com/user-attachments/assets/1488aa4c-1eaa-47b2-aaff-8692abe1019f)
+
+
+
+
+
+
