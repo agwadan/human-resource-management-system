@@ -24,7 +24,8 @@
   border-radius: 1rem;
 }
 
-.container h1 {
+.container h1,
+adm {
   color: #013e7d;
   margin: 2rem;
 }
@@ -58,7 +59,7 @@
   padding: 0.5rem 1rem;
 }
 
-/* Retrieve Display Styling */
+/* ===== Retrieve Display Styling ====== */
 .retrieve .staff-detail {
   display: flex;
   margin-top: 1rem;
@@ -76,4 +77,44 @@
 
 .retrieve .staff-detail .text {
   margin-left: 1rem;
+}
+
+/* ===== Admin Display Styling ====== */
+.admin h1 {
+  text-align: center;
+  color: #013e7d;
+  margin-top: 2rem;
+}
+
+.admin .stats {
+  display: flex;
+  gap: 1rem;
+  justify-content: space-evenly;
+  margin-top: 2rem;
+}
+
+.admin .stat-item {
+  text-align: center;
+  gap: 0.5rem;
+  color: white;
+  padding: 6rem;
+  border-radius: 0.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.admin .stat-item p {
+  font-size: 4rem;
+}
+
+.admin .stat-item:nth-child(1) {
+  background-color: hsla(210, 98%, 25%, 0.5);
+}
+
+.admin .stat-item:nth-child(2) {
+  background-color: rgba(0, 128, 0, 0.5);
+}
+
+.admin .stat-item:nth-child(3) {
+  background-color: rgba(255, 0, 0, 0.5);
 }

@@ -24,13 +24,22 @@ const AdminDashboard = () => {
   }, []);
 
   return (
-    <div>
-      <h2>Admin Dashboard</h2>
+    <div className="admin">
+      <h1>Admin Dashboard</h1>
       {error && <p style={{ color: "red" }}>{error}</p>}
-      <div>
-        <p>Total Requests: {metrics.totalRequests}</p>
-        <p>Successful Requests: {metrics.successfulRequests}</p>
-        <p>Failed Requests: {metrics.failedRequests}</p>
+      <div className="stats">
+        <div className="stat-item">
+          <h3>Total Requests</h3>
+          <p>{metrics.totalRequests}</p>
+        </div>
+        <div className="stat-item">
+          <h3>Successful Requests</h3>
+          <p>{metrics.successfulRequests}</p>
+        </div>
+        <div className="stat-item">
+          <h3>Failed Requests</h3>
+          <p> {metrics.failedRequests}</p>
+        </div>
       </div>
     </div>
   );
