@@ -29,7 +29,7 @@
   margin: 2rem;
 }
 
-.container form {
+.container .form {
   display: flex;
   flex-direction: column;
   max-width: 80%;
@@ -38,21 +38,41 @@
   padding: 2rem;
 }
 
-.container form input {
+.container .form input {
   padding: 0.5rem;
   border: none;
   background-color: rgb(209, 231, 251);
 }
 
-.container form .name-control {
+.container .form .name-control {
   display: flex;
   justify-content: space-between;
   gap: 8px;
 }
 
-.container form button {
+.container .form button {
   border: none;
   background-color: #013e7d;
   color: white;
   padding: 0.5rem 1rem;
+}
+
+/* Retrieve Display Styling */
+.retrieve .staff-detail {
+  display: flex;
+  margin-top: 1rem;
+  border-bottom: 1px solid #bec2c7;
+  padding: 0.5rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.retrieve .staff-detail img {
+  width: 4rem;
+  height: 1rem;
+  border-radius: 5px;
+}
+
+.retrieve .staff-detail .text {
+  margin-left: 1rem;
 }

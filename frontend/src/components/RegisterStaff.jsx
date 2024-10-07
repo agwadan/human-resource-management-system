@@ -48,7 +48,7 @@ const RegisterStaff = () => {
   return (
     <div className="container">
       <h1>Register Staff</h1>
-      <form onSubmit={handleSubmit}>
+      <form className="form" onSubmit={handleSubmit}>
         <div className="name-control">
           <input
             type="text"

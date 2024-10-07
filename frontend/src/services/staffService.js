@@ -19,7 +19,7 @@ export const registerStaff = async (formData) => {
 export const retrieveStaff = async (employeeNumber = null) => {
   
     try {
-        const url = employeeNumber ? `${BASE_STAFF_URL}/retrieve?employeeNumber=${employeeNumber}` : `${BASE_URL}/retrieve`;
+        const url = employeeNumber ? `${BASE_STAFF_URL}/retrieve?employeeNumber=${employeeNumber}` : `${BASE_STAFF_URL}/retrieve`;
         const response = await axios.get(url);
         return response.data;
     } catch (error) {
