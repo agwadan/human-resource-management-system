@@ -55,6 +55,7 @@ JWT_SECRET=your_secret_key
 ## Things to Note
 
 - The navigation menu on the client side of the web app is for testing purposes. It does not represent exactly what would appear in the production application.
+- The auth generated code for testing purposes is `1234567890`
 
 ## URLs for the different functions
 
