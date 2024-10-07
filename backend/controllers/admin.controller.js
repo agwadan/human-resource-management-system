@@ -55,18 +55,16 @@ const adminLogin = async (req, res) => {
       return res.status(401).json({ message: 'Invalid employee number or password' });
     }
 
-    // Check the password
     const passwordIsValid = bcrypt.compareSync(password, admin.password);
     if (!passwordIsValid) {
       return res.status(401).json({ message: 'Invalid employee number or password' });
     }
 
-    // Generate JWT token
     const token = jwt.sign({ employeeNumber: admin.employeeNumber }, secretKey, { expiresIn: '1h' });
 
     res.status(200).json({
       message: 'Login successful',
-      token, // Send the token to the frontend
+      token, 
     });
   } catch (error) {
     console.error('Error logging in:', error);
