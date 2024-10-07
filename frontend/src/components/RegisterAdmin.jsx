@@ -25,18 +25,16 @@ const RegisterAdmin = () => {
   };
 
   return (
-    <div>
-      <h2>Admin Registration</h2>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>Employee Number:</label>
-          <input
-            type="text"
-            value={employeeNumber}
-            onChange={(e) => setEmployeeNumber(e.target.value)}
-            required
-          />
-        </div>
+    <div className="container">
+      <h1>Admin Registration</h1>
+      <form onSubmit={handleSubmit} className="form">
+        <input
+          type="text"
+          value={employeeNumber}
+          placeholder="Employee Number"
+          onChange={(e) => setEmployeeNumber(e.target.value)}
+          required
+        />
         <button type="submit">Register Admin</button>
       </form>
 
