@@ -42,29 +42,32 @@ const UpdateStaff = () => {
   };
 
   return (
-    <div>
-      <input
-        type="text"
-        placeholder="Employee Number"
-        value={employeeNumber}
-        onChange={(e) => setEmployeeNumber(e.target.value)}
-      />
-      <input
-        type="date"
-        name="dateOfBirth"
-        placeholder="Date of Birth"
-        value={staffData.dateOfBirth}
-        onChange={handleChange}
-        required
-      />
-      <input
-        type="file"
-        name="idPhoto"
-        accept="image/*"
-        onChange={handleImageChange}
-      />
-      <button onClick={handleUpdate}>Update Staff</button>
-      {message && <p>{message}</p>}
+    <div className="container">
+      <h1>Update Staff</h1>
+      <div className="form">
+        <input
+          type="text"
+          placeholder="Employee Number"
+          value={employeeNumber}
+          onChange={(e) => setEmployeeNumber(e.target.value)}
+        />
+        <input
+          type="date"
+          name="dateOfBirth"
+          placeholder="Date of Birth"
+          value={staffData.dateOfBirth}
+          onChange={handleChange}
+          required
+        />
+        <input
+          type="file"
+          name="idPhoto"
+          accept="image/*"
+          onChange={handleImageChange}
+        />
+        <button onClick={handleUpdate}>Update Staff</button>
+        {message && <p>{message}</p>}
+      </div>
     </div>
   );
 };

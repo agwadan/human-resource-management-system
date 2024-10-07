@@ -20,6 +20,7 @@ const RetrieveStaff = () => {
 
   return (
     <div className="container retrieve">
+      <h1>Retrieve Staff</h1>
       <div className="form">
         <input
           type="text"
