@@ -37,13 +37,20 @@ export const updateStaff = async (employeeNumber, staffData) => {
     }
 };
 
+/*===== Register Admin =====*/
+export const registerAdmin = async (employeeNumber) => {
+    try {
+        const response = await axios.post(`${BASE_ADMIN_URL}/register`, { employeeNumber });
+        return response.data; // Response will include the generated password
+    } catch (error) {
+        console.error("Error registering admin:", error);
+        throw error.response ? error.response.data : new Error("Failed to register admin");
+    }
+};
 /*===== Fetch Admin Metrics =====*/
 export const getMetrics = async () => {
     try {
         const response = await axios.get(`${BASE_ADMIN_URL}/metrics`);
-        console.log('====================================');
-        console.log(response.data);
-        console.log('====================================');
         return response.data;
         
     } catch (error) {
