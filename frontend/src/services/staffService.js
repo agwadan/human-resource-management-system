@@ -47,6 +47,20 @@ export const registerAdmin = async (employeeNumber) => {
         throw error.response ? error.response.data : new Error("Failed to register admin");
     }
 };
+
+export const loginAdmin = async (employeeNumber, password) => {
+    try {
+        const response = await axios.post(`${BASE_ADMIN_URL}/login`, {
+            employeeNumber,
+            password,
+        });
+        return response.data; // This should return the JWT token
+    } catch (error) {
+        console.error("Error logging in admin:", error);
+        throw error.response ? error.response.data : new Error("Failed to log in admin");
+    }
+};
+
 /*===== Fetch Admin Metrics =====*/
 export const getMetrics = async () => {
     try {

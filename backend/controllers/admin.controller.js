@@ -1,8 +1,11 @@
 const Log = require('../models/log.model');
 const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
 const crypto = require('crypto');
 const Admin = require('../models/admin.model');
+const secretKey = 'your-secret-key';
 
+/* ===== Register Admin ===== */
 const registerAdmin = async (req, res) => {
   try {
     const { employeeNumber } = req.body;
@@ -39,6 +42,38 @@ const registerAdmin = async (req, res) => {
     res.status(500).json({ message: 'Failed to register admin', error });
   }
 };
+
+/* ===== Login Admin ===== */
+const adminLogin = async (req, res) => {
+  const { employeeNumber, password } = req.body;
+
+  try {
+    // Find the admin by employee number
+    const admin = await Admin.findOne({ where: { employeeNumber } });
+
+    if (!admin) {
+      return res.status(401).json({ message: 'Invalid employee number or password' });
+    }
+
+    // Check the password
+    const passwordIsValid = bcrypt.compareSync(password, admin.password);
+    if (!passwordIsValid) {
+      return res.status(401).json({ message: 'Invalid employee number or password' });
+    }
+
+    // Generate JWT token
+    const token = jwt.sign({ employeeNumber: admin.employeeNumber }, secretKey, { expiresIn: '1h' });
+
+    res.status(200).json({
+      message: 'Login successful',
+      token, // Send the token to the frontend
+    });
+  } catch (error) {
+    console.error('Error logging in:', error);
+    res.status(500).json({ message: 'Failed to log in', error });
+  }
+};
+
 /* ===== Getting Metrics for api performance ===== */
 const getMetrics = async (req, res) => {
   try {
@@ -56,4 +91,4 @@ const getMetrics = async (req, res) => {
   }
 };
 
-module.exports = { registerAdmin, getMetrics };
+module.exports = { registerAdmin, adminLogin, getMetrics };
