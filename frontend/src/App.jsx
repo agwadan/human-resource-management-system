@@ -7,12 +7,17 @@ import AdminDashboard from "./components/Admin";
 import AdminLogin from "./components/AdminLogin";
 import ProtectedRoute from "./components/ProtectedRoute";
 import RegisterAdmin from "./components/RegisterAdmin";
+import Logo from "/dfcu_logo.png";
+import Navbar from "./components/Navbar";
 
 function App() {
   return (
     <Router>
-      <div>
-        <h1>Staff Management</h1>
+      <div id="app">
+        <Navbar />
+        <div className="image-container">
+          <img src={Logo} />
+        </div>
         <Routes>
           <Route path="/" element={<RegisterStaff />} />
           <Route path="/retrieve" element={<RetrieveStaff />} />

@@ -24,27 +24,25 @@ const AdminLogin = () => {
   };
 
   return (
-    <div>
-      <h2>Admin Login</h2>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>Employee Number:</label>
-          <input
-            type="text"
-            value={employeeNumber}
-            onChange={(e) => setEmployeeNumber(e.target.value)}
-            required
-          />
-        </div>
-        <div>
-          <label>Password:</label>
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </div>
+    <div className="container">
+      <h1>Admin Login</h1>
+      <form onSubmit={handleSubmit} className="form">
+        <input
+          type="text"
+          value={employeeNumber}
+          placeholder="Employee Number"
+          onChange={(e) => setEmployeeNumber(e.target.value)}
+          required
+        />
+
+        <input
+          type="password"
+          value={password}
+          placeholder="Password"
+          onChange={(e) => setPassword(e.target.value)}
+          required
+        />
+
         <button type="submit">Login</button>
       </form>
 
