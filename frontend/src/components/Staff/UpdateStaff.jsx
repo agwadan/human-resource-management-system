@@ -1,19 +1,19 @@
 import React, { useState } from "react";
-import { updateStaff } from "../services/staffService";
+import { updateStaff } from "../../services/staffService";
 
 const UpdateStaff = () => {
   const [employeeNumber, setEmployeeNumber] = useState("");
   const [staffData, setStaffData] = useState({
     dateOfBirth: "",
     idPhoto: null,
-  }); // idPhoto should be null to hold file
+  });
   const [message, setMessage] = useState("");
+  const [error, setError] = useState("");
 
   const handleChange = (e) => {
     setStaffData({ ...staffData, [e.target.name]: e.target.value });
   };
 
-  // Handle image file upload
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     if (file) {
@@ -34,10 +34,13 @@ const UpdateStaff = () => {
     }
 
     try {
-      const response = await updateStaff(employeeNumber.trim(), formData); // Pass FormData to the backend
-      setMessage("Staff updated successfully!");
+      const response = await updateStaff(employeeNumber.trim(), formData);
+      console.log("====================================");
+      console.log(response);
+      console.log("====================================");
+      setMessage(response.message);
     } catch (error) {
-      setMessage("Failed to update staff.");
+      setError("Failed to update staff.");
     }
   };
 
@@ -67,6 +70,7 @@ const UpdateStaff = () => {
         />
         <button onClick={handleUpdate}>Update Staff</button>
         {message && <p>{message}</p>}
+        {error && <p style={{ color: "red" }}>{error}</p>}
       </div>
     </div>
   );

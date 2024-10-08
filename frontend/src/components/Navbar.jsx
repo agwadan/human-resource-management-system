@@ -21,6 +21,11 @@ const Navbar = () => {
           </Link>
         </li>
         <li style={styles.navItem}>
+          <Link to="/register-admin" style={styles.navLink}>
+            Register Admin
+          </Link>
+        </li>
+        <li style={styles.navItem}>
           <Link to="/login-admin" style={styles.navLink}>
             Admin Dashboard
           </Link>
@@ -30,7 +35,6 @@ const Navbar = () => {
   );
 };
 
-// Simple styles for the navbar
 const styles = {
   navbar: {
     backgroundColor: "#282c34",

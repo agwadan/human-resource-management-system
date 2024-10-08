@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { registerStaff } from "../services/staffService";
+import { registerStaff } from "../../services/staffService";
 
 const RegisterStaff = () => {
   const [staffData, setStaffData] = useState({
@@ -10,6 +10,7 @@ const RegisterStaff = () => {
     authCode: "",
   });
   const [message, setMessage] = useState("");
+  const [error, setError] = useState("");
 
   const handleChange = (e) => {
     setStaffData({ ...staffData, [e.target.name]: e.target.value });
@@ -38,10 +39,10 @@ const RegisterStaff = () => {
     try {
       const response = await registerStaff(formData);
       setMessage(
-        `Staff Registered! Employee Number: ${response.employeeNumber}`
+        `${staffData.otherNames} ${staffData.surname} Registered Successfully ✅! ${staffData.otherNames}'s Employee Number: ${response.employeeNumber}`
       );
     } catch (error) {
-      setMessage(error.message || "Failed to register staff");
+      setError(error.message || "Failed to register staff");
     }
   };
 
@@ -72,7 +73,6 @@ const RegisterStaff = () => {
           required
         />
 
-        {/* File input for image upload */}
         <input
           type="file"
           name="idPhoto"
@@ -89,6 +89,7 @@ const RegisterStaff = () => {
         />
         <button type="submit">Register Staff</button>
         {message && <p>{message}</p>}
+        {error && <p style={{ color: "red" }}>{error}</p>}
       </form>
     </div>
   );

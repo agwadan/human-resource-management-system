@@ -47,8 +47,8 @@ adm {
 }
 
 .container .form .name-control {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
   gap: 8px;
 }
 

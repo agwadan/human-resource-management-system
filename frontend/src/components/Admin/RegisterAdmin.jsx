@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { registerAdmin } from "../services/staffService"; // Import the updated registerAdmin function
+import { registerAdmin } from "../../services/adminService";
 
 const RegisterAdmin = () => {
   const [employeeNumber, setEmployeeNumber] = useState("");
@@ -8,18 +8,15 @@ const RegisterAdmin = () => {
   const [error, setError] = useState("");
 
   const handleSubmit = async (e) => {
-    e.preventDefault(); // Prevent default form submission
+    e.preventDefault();
 
     try {
       const response = await registerAdmin(employeeNumber);
-      console.log("====================================");
-      console.log(response);
-      console.log("====================================");
-      setMessage(response.message); // Success message
-      setGeneratedPassword(response.admin.generatedPassword); // Display the generated password
-      setError(""); // Clear any error messages
+      setMessage(response.message);
+      setGeneratedPassword(response.admin.generatedPassword);
+      setError("");
     } catch (err) {
-      setMessage(""); // Clear any success messages
+      setMessage("");
       setError(err.message || "Registration failed. Please try again.");
     }
   };

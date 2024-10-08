@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { loginAdmin } from "../services/staffService"; // Import the loginAdmin function
+import { loginAdmin } from "../../services/adminService";
 
 const AdminLogin = () => {
   const [employeeNumber, setEmployeeNumber] = useState("");
@@ -12,14 +12,11 @@ const AdminLogin = () => {
     e.preventDefault();
     try {
       const response = await loginAdmin(employeeNumber, password);
-      console.log("====================================");
-      console.log(response);
-      console.log("====================================");
-      const { token } = response; // Get the token from the response
-      localStorage.setItem("token", token); // Save the token in localStorage
-      navigate("/admin"); // Redirect to the protected admin route
+      const { token } = response;
+      localStorage.setItem("token", token);
+      navigate("/admin");
     } catch (err) {
-      setError(err.message || "Login failed. Please try again.");
+      setError(err.message || "Login failed. Please check ");
     }
   };
 

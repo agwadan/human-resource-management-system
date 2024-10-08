@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const BASE_STAFF_URL = 'http://localhost:3000/api/staff';
-const BASE_ADMIN_URL = 'http://localhost:3000/api/admin';
+
 
 /* ===== Register new staff member =====*/
 export const registerStaff = async (formData) => {
@@ -37,37 +37,3 @@ export const updateStaff = async (employeeNumber, staffData) => {
     }
 };
 
-/*===== Register Admin =====*/
-export const registerAdmin = async (employeeNumber) => {
-    try {
-        const response = await axios.post(`${BASE_ADMIN_URL}/register`, { employeeNumber });
-        return response.data; // Response will include the generated password
-    } catch (error) {
-        console.error("Error registering admin:", error);
-        throw error.response ? error.response.data : new Error("Failed to register admin");
-    }
-};
-
-export const loginAdmin = async (employeeNumber, password) => {
-    try {
-        const response = await axios.post(`${BASE_ADMIN_URL}/login`, {
-            employeeNumber,
-            password,
-        });
-        return response.data; // This should return the JWT token
-    } catch (error) {
-        console.error("Error logging in admin:", error);
-        throw error.response ? error.response.data : new Error("Failed to log in admin");
-    }
-};
-
-/*===== Fetch Admin Metrics =====*/
-export const getMetrics = async () => {
-    try {
-        const response = await axios.get(`${BASE_ADMIN_URL}/metrics`);
-        return response.data;
-        
-    } catch (error) {
-        throw error.response ? error.response.data : new Error('Failed to retrieve metrics');
-    }
-};
