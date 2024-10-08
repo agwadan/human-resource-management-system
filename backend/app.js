@@ -21,21 +21,20 @@ app.get('/', (req, res) => {
 });
 
 
-/* Accessing Staff Routes
--------------------------*/
+/*====== Accessing Staff Routes======*/
 app.use('/api/staff', staffRoutes);
+
+/* ====== Accessing Admin Routes ====== */
 app.use('/api/admin', adminRoutes);
 
-/* Synchronizing sequelize models with database
-------------------------------------------------*/
+/* ======Synchronizing sequelize models with database ======*/
 sequelize.sync().then(() => {
     console.log("Models synced successfully.");
 }).catch(err => {
     console.error("Error syncing models:", err);
 });
 
-/* Starting the server 
-----------------------*/
+/* ====== Starting the server ======*/
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
 });

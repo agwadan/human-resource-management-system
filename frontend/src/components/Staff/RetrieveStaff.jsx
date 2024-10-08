@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { retrieveStaff } from "../services/staffService";
+import { retrieveStaff } from "../../services/staffService";
 
 const RetrieveStaff = () => {
   const [employeeNumber, setEmployeeNumber] = useState("");
@@ -8,11 +8,11 @@ const RetrieveStaff = () => {
 
   const handleRetrieve = async () => {
     try {
-      const response = await retrieveStaff(employeeNumber.trim()); // Trim to remove white spaces from both ends of string
+      const response = await retrieveStaff(employeeNumber.trim());
       setStaff(response);
       setError("");
     } catch (err) {
-      console.log("Error retrieving staff:", err);
+      console.log(err);
       setError("There was an error retrieving staff");
       setStaff(null);
     }
@@ -30,7 +30,7 @@ const RetrieveStaff = () => {
         />
         <button onClick={handleRetrieve}>Retrieve Staff</button>
 
-        {error && <p>{error}</p>}
+        {error && <p style={{ color: "red" }}>{error}</p>}
 
         {staff && (
           <div>
@@ -40,7 +40,7 @@ const RetrieveStaff = () => {
                   <div>
                     {s.idPhoto && (
                       <img
-                        src={`data:image/jpeg;base64,${s.idPhoto}`} // Adjust MIME type as needed (image/png, etc.)
+                        src={`data:image/jpeg;base64,${s.idPhoto}`}
                         alt="Staff ID"
                       />
                     )}
@@ -56,7 +56,6 @@ const RetrieveStaff = () => {
                       <b>Employee Number:</b> <i>{s.employeeNumber}</i>
                     </p>
                   </div>
-                  {/* Display Base64 image */}
                 </div>
               ))
             ) : (
@@ -64,7 +63,7 @@ const RetrieveStaff = () => {
                 <div>
                   {staff.idPhoto && (
                     <img
-                      src={`data:image/jpeg;base64,${staff.idPhoto}`} // Adjust MIME type as needed
+                      src={`data:image/jpeg;base64,${staff.idPhoto}`}
                       alt="Staff ID"
                       style={{ width: "150px", height: "150px" }}
                     />
@@ -79,7 +78,7 @@ const RetrieveStaff = () => {
                   </p>
                   <p>
                     {" "}
-                    <b>Employee Number:</b> <i>{staff.employeeNumber}</i>
+                    <b>Employee Number: </b> <i>{staff.employeeNumber}</i>
                   </p>
                 </div>
               </div>

@@ -4,8 +4,7 @@ const multer = require('multer');
 const storage = multer.memoryStorage();//--------- Setting up Multer to store file in memory as buffer
 const upload = multer({ storage: storage });//---- Multer middleware
 
-/* Register new staff members
----------------------------- */
+/* ====== Register new staff members ======*/
 const registerStaff = async (req, res) => {
 
     try {
@@ -41,11 +40,10 @@ const registerStaff = async (req, res) => {
     }
 };
 
-/* Retrieve staff member(s)
--------------------------- */
+/* ===== Retrieve staff member(s) =====*/
 const getStaff = async (req, res) => {
     try {
-        const { employeeNumber } = req.query;  // Employee Number passed as a query parameter
+        const { employeeNumber } = req.query;  
 
         if (employeeNumber) {
             const staffMember = await Staff.findOne({ where: { employeeNumber } });
@@ -62,8 +60,7 @@ const getStaff = async (req, res) => {
     }
 };
 
-/* Update staff member's details
---------------------- */
+/* ====== Update staff member's details ===== */
 const updateStaff = async (req, res) => {
     try {
         const { employeeNumber } = req.params;
@@ -85,7 +82,7 @@ const updateStaff = async (req, res) => {
 
         await staffMember.save();
 
-        res.status(200).json({ message: 'Staff member updated successfully.', staffMember });
+        res.status(200).json({ message: `Staff member updated successfully.`, staffMember });
     } catch (error) {
         console.error('Error updating staff member:', error); 
         res.status(500).json({ message: 'Failed to update staff member.', error });

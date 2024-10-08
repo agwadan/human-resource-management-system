@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { getMetrics } from "../services/staffService";
+import { getMetrics } from "../../services/adminService";
 
 const AdminDashboard = () => {
   const [metrics, setMetrics] = useState({

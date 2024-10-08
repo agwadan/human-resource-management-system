@@ -24,18 +24,16 @@ You can also just download the zip folder containing the project source code.
 
 - If you don't have MySQL installed, you will need to download it for the operating system that you're using.
 
-- Import the Database from SQL file: Once MySQL is installed, you can import the database structure and data using the SQL file included in the project repository.
+- Import the Database from SQL file in the database folder: Once MySQL is installed, you can import the database structure and data using the SQL file included in the project repository.
 
 - Create an .env file in your backend directory to configure database connection details and other settings.
 
-```
-PORT=3000
+```PORT=3000
 DB_HOST=localhost
 DB_USER=root or your MySQL username
 DB_PASSWORD=your_password
 DB_NAME=database_name
 JWT_SECRET=your_secret_key
-
 ```
 
 3. Backend Setup (Node.js + Express)
@@ -57,7 +55,7 @@ JWT_SECRET=your_secret_key
 - The navigation menu on the client side of the web app is for testing purposes. It does not represent exactly what would appear in the production application.
 - The auth generated code for testing purposes is `1234567890`
 
-## URLs for the different functions
+## URLs for the different functions on the client side
 
 - Adding a staff member: `http://localhost:5173/`
 - Retrieving staff details: `http://localhost:5173/retrieve`
@@ -85,8 +83,14 @@ JWT_SECRET=your_secret_key
 ### Admin Dashboard
 ![image](https://github.com/user-attachments/assets/1488aa4c-1eaa-47b2-aaff-8692abe1019f)
 
-
-
-
-
-
+# Proposed next steps
+- ### Hosting the Backend on a Cloud Service
+To make the system production-ready, the backend should be hosted on a cloud service like AWS. 
+- ### Implement the Authentication Code Generation
+Currently, the authentication code is manually input for testing purposes. In the next iteration, implement automatic generation of the authentication code when the admin is adding a new staff member.
+- ### Move Database to Cloud
+Move the MySQL database to a cloud service like Amazon RDS or Google Cloud SQL to improve scalability and security.
+- ### Refine Frontend UI/UX
+Improve the user interface and experience by integrating better form validation, error handling, and a more user-friendly design.
+- ### Set Up Continuous Integration/Continuous Deployment (CI/CD)
+Automate testing, building, and deployment processes using tools like GitHub Actions.

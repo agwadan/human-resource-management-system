@@ -1,12 +1,12 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import RegisterStaff from "./components/RegisterStaff";
-import RetrieveStaff from "./components/RetrieveStaff";
-import UpdateStaff from "./components/UpdateStaff";
-import AdminDashboard from "./components/Admin";
-import AdminLogin from "./components/AdminLogin";
-import ProtectedRoute from "./components/ProtectedRoute";
-import RegisterAdmin from "./components/RegisterAdmin";
+import RegisterStaff from "./components/Staff/RegisterStaff";
+import RetrieveStaff from "./components/Staff/RetrieveStaff";
+import UpdateStaff from "./components/Staff/UpdateStaff";
+import AdminDashboard from "./components/Admin/Admin";
+import AdminLogin from "./components/Admin/AdminLogin";
+import ProtectedRoute from "./components/Admin/ProtectedRoute";
+import RegisterAdmin from "./components/Admin/RegisterAdmin";
 import Logo from "/dfcu_logo.png";
 import Navbar from "./components/Navbar";
 
