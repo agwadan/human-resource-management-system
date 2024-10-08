@@ -12,7 +12,7 @@
 - MySQL installed.
 - Git installed (optional but recommended for pulling the project from a repository).
 
-1. Cloning the Repository
+## 1. Cloning the Repository
 
 Run the command below to clone the repository (Assuming you have git installed)
 
@@ -20,7 +20,7 @@ Run the command below to clone the repository (Assuming you have git installed)
 
 You can also just download the zip folder containing the project source code.
 
-2. Database Setup (MySQL)
+## 2. Database Setup (MySQL)
 
 - If you don't have MySQL installed, you will need to download it for the operating system that you're using.
 
@@ -36,14 +36,14 @@ DB_NAME=database_name
 JWT_SECRET=your_secret_key
 ```
 
-3. Backend Setup (Node.js + Express)
+## 3. Backend Setup (Node.js + Express)
 
 - In your terminal, access the backend directory using the command `cd backend`.
 - Install the dependencies using `npm install` if you're using npm or `yarn` if you're using yarn.
 - Run the command `npm start` or `yarn start` to start the backend.
 - Your backend should now be running on port `3000` or whatever port number you set in your `.env` file.
 
-4. Frontend Setup (React.js)
+## 4. Frontend Setup (React.js)
 
 - In your terminal, access the frontend directory using the command `cd frontend`.
 - Install the dependencies using `npm install` if you're using npm or `yarn` if you're using yarn.
@@ -84,13 +84,13 @@ JWT_SECRET=your_secret_key
 ![image](https://github.com/user-attachments/assets/1488aa4c-1eaa-47b2-aaff-8692abe1019f)
 
 # Proposed next steps
-- ### Hosting the Backend on a Cloud Service
-To make the system production-ready, the backend should be hosted on a cloud service like AWS. 
-- ### Implement the Authentication Code Generation
-Currently, the authentication code is manually input for testing purposes. In the next iteration, implement automatic generation of the authentication code when the admin is adding a new staff member.
-- ### Move Database to Cloud
-Move the MySQL database to a cloud service like Amazon RDS or Google Cloud SQL to improve scalability and security.
-- ### Refine Frontend UI/UX
-Improve the user interface and experience by integrating better form validation, error handling, and a more user-friendly design.
-- ### Set Up Continuous Integration/Continuous Deployment (CI/CD)
-Automate testing, building, and deployment processes using tools like GitHub Actions.
+### Hosting the Backend on a Cloud Service
+- To make the system production-ready, the backend should be hosted on a cloud service like AWS. 
+### Implement the Authentication Code Generation
+- Currently, the authentication code is manually input for testing purposes. In the next iteration, implement automatic generation of the authentication code when the admin is adding a new staff member.
+### Move Database to Cloud
+- Move the MySQL database to a cloud service like Amazon RDS or Google Cloud SQL to improve scalability and security.
+### Refine Frontend UI/UX
+- Improve the user interface and experience by integrating better form validation, error handling, and a more user-friendly design.
+### Set Up Continuous Integration/Continuous Deployment (CI/CD)
+- Automate testing, building, and deployment processes using tools like GitHub Actions.
