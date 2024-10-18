@@ -1,6 +1,11 @@
 const Log = require('../models/log.model'); 
 
 const logRequest = async (req, res, next) => {
+
+  if (req.originalUrl === '/favicon.ico') {
+    return next(); // Skip logging and move to the next middleware
+  }
+
   res.on('finish', async () => {
     try {
       const log = {

@@ -2,6 +2,9 @@ const Staff = require('../models/staff.model');
 const multer = require('multer');
 
 const storage = multer.memoryStorage();//--------- Setting up Multer to store file in memory as buffer
+console.log('====================================');
+console.log(storage);
+console.log('====================================');
 const upload = multer({ storage: storage });//---- Multer middleware
 
 /* ====== Register new staff members ======*/
@@ -10,6 +13,9 @@ const registerStaff = async (req, res) => {
     try {
         const { surname, otherNames, dateOfBirth, authCode } = req.body;
         const idPhotoFile = req.file; 
+        console.log('====================================');
+        console.log(req.file);
+        console.log('====================================');
 
         if (authCode.length !== 10) {
             return res.status(400).json({ message: 'Invalid auth code.' });
@@ -20,7 +26,11 @@ const registerStaff = async (req, res) => {
             idPhoto = idPhotoFile.buffer.toString('base64');
         }
 
+        
         const employeeNumber = Math.random().toString(36).substring(2, 10).toUpperCase();
+        console.log('====================================');
+        console.log(`success`);
+        console.log('====================================');
 
         const newStaff = await Staff.create({
             surname,
